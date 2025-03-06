@@ -85,9 +85,7 @@ public class Board
     }
 
     private void removeRandomNums() 
-    {
-        usedIndexes.clear();
-        
+    {   
         int counter = 0;
         
         while (counter < numRemoved) 
@@ -95,10 +93,12 @@ public class Board
             int randomRow = (int) (Math.random()*9);
             int randomCol = (int) (Math.random()*9);
             int[] temp = {randomRow, randomCol};
+
             
-            if (!usedIndexes.contains(temp)) 
+            if (!containsArr(usedIndexes, temp)) 
             {
                 board[randomRow][randomCol] = 0;
+                usedIndexes.add(temp);
                 counter++;
             }
         }
